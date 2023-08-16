@@ -7,8 +7,17 @@ class PokemonService {
         this.pokedex = new Pokedex.Pokedex();
     }
 
-    async getPokemonsList(limit = 20) {
+    async getPokemonsList(offset = 0, limit = 20) {
         try {
+            var promises = []
+            const responseList = await this.pokedex.getPokemonsList({ offser, limit });
+                
+                responseList.results.forEach(element => {
+                var promise this.pokedex.getPokemonByName(element.name)
+                    promises.push (promise)
+                });
+                consle.log(response)
+      })
         } catch (error) {
             throw new Error("Error fetching Pokémon data");
         }
@@ -41,7 +50,6 @@ async function startApp() {
     const htmlBuilder = new HtmlBuilder("content");
 
     try {
-        // Fetch the list of Pokémon from the PokeAPI
         const pokemons = await pokemonService.getPokemonsList();
 
         // Display the Pokémon cards
